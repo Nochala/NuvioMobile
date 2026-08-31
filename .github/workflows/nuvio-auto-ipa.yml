@@ -94,6 +94,13 @@ jobs:
           ref: ${{ needs.check.outputs.upstream_sha }}
           path: source
 
+      - name: Create CI local properties
+        working-directory: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          : > local.properties
+
       - name: Set up Java 17
         uses: actions/setup-java@v5
         with:
